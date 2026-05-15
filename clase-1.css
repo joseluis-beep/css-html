@@ -1,6 +1,17 @@
+body{
+    background: #000;
+    align-items: center;
+}
+
+a{
+    color:aqua;
+}
+
 h1{
     color: yellow;
     font-size: 10px;
+    text-align: center;
+    
 }
 h2{
     color: blue;
@@ -38,7 +49,7 @@ li{
 }
 
 p {
-    color:rgb(17, 40, 40);
+    color:rgb(29, 228, 228);
     font: bold;
     font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
@@ -62,3 +73,45 @@ p {
         <li class="faltante" id="falta">polvo de hornear</li>
     </ul>
 */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+nav{
+    position: relative;
+    width: 400px;
+    height: 50px;
+    background: #222;
+    border-radius: 4px;
+    display: flex;
+}
+
+nav a{
+    position: relative;
+    flex: 1;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1em;
+    z-index: 1;
+}
+
+nav span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 133px;
+    height: 100%;
+    background: linear-gradient(45deg,#2e3192,#1bffff);
+    border-radius: 8px;
+    transition: 0.5s;
+}
+nav a:nth-child(1):hover ~ span{
+    left: 0;
+}
