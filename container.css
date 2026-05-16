@@ -1,0 +1,42 @@
+body{
+    background: #000000; /* color de fondo claro */
+}
+
+/* Contenedor principal */
+.container{
+    display: flex; /* pone los elementos en fila */
+    gap: 5px; /* espacio entre cajas */
+}
+
+/* Estilo general de cada caja */
+.container div{
+    flex-grow: 1; /* todas empiezan con el mismo tamaño */
+    padding: 40px; /* espacio interno */
+    text-align: center; /* centra el número */
+    font-size: 20px; /* tamaño del texto */
+    font-weight: bold; /* texto grueso */
+    border: 2px solid #000; /* borde negro */
+    transition: all 0.3s ease; /* animación suave */
+}
+
+/* Colores de las cajas */
+.box1{
+    background: #8a2be2; /* morado */
+}
+
+.box2{
+    background: #f4d35e; /* amarillo */
+}
+
+.box3{
+    background: #8a2be2; /* morado */
+}
+
+.box4{
+    background: #f4d35e; /* amarillo */
+}
+
+/* Efecto cuando pasas el mouse */
+.container div:hover{
+    flex-grow: 10; /* la caja aumenta de tamaño */
+}
