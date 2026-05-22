@@ -23,9 +23,16 @@ strong{
 
 nav{
     margin: 200px;
-   background-color:rgb(255, 255, 255);
+    background-color:rgb(255, 255, 255);
+    height: 250%;
+    width: 400px;
+    border-radius: 30px;
+    padding: 30px;
+
 
 }
 body{
     background-color: #f4f4f9;
+    width: 300%;
+    height: 150%;
 }
