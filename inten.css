@@ -3,20 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-}
-h1{
-    color: yellow;
-    font-size: 12px;
-    min-height: 30vh;
-}
 
-p {
-    color: yellow;
-    text-align: center;
-    width: 1000px;
-    height: 100px;
-    padding: 109px;
-    
 }
 
 body{
