@@ -486,11 +486,20 @@
       border: none;
       outline: none;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: #1a1a1a;
       background: transparent;
       text-align: left;
       font-family: 'Open Sans', sans-serif;
+      cursor: default;
+    }
+
+    @keyframes totalFlash {
+      0%   { background: #c8e6c9; }
+      100% { background: #e8f5e9; }
+    }
+    .total-row.updated {
+      animation: totalFlash 0.45s ease;
     }
 
     /* ── FIRMAS ── */

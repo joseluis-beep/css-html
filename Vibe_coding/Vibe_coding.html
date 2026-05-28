@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recibo Green & Blue Aquamarine</title>
-  <link rel="stylesheet" href="gree.css">
-
+  <link rel="stylesheet" href="Vibe_coding.css">
 </head>
 <body>
 <div class="btn-bar">
@@ -134,27 +133,27 @@
     <div class="desc-rows">
       <div class="desc-row">
         <div class="desc-cell"><input type="text" placeholder=""/></div>
-        <div class="total-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input class="vr-total" type="text" placeholder="0" inputmode="numeric"/></div>
       </div>
       <div class="desc-row">
         <div class="desc-cell"><input type="text" placeholder=""/></div>
-        <div class="total-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input class="vr-total" type="text" placeholder="0" inputmode="numeric"/></div>
       </div>
       <div class="desc-row">
         <div class="desc-cell"><input type="text" placeholder=""/></div>
-        <div class="total-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input class="vr-total" type="text" placeholder="0" inputmode="numeric"/></div>
       </div>
       <div class="desc-row">
         <div class="desc-cell"><input type="text" placeholder=""/></div>
-        <div class="total-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input class="vr-total" type="text" placeholder="0" inputmode="numeric"/></div>
       </div>
       <div class="desc-row">
         <div class="desc-cell"><input type="text" placeholder=""/></div>
-        <div class="total-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input class="vr-total" type="text" placeholder="0" inputmode="numeric"/></div>
       </div>
       <div class="desc-row">
         <div class="desc-cell"><input type="text" placeholder=""/></div>
-        <div class="total-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input class="vr-total" type="text" placeholder="0" inputmode="numeric"/></div>
       </div>
     </div>
 
@@ -165,7 +164,7 @@
         <textarea placeholder=""></textarea>
       </div>
       <div class="obs-total-cell">
-        <input type="text" placeholder=""/>
+        <input class="vr-total" type="text" placeholder="0" inputmode="numeric"/>
       </div>
     </div>
 
@@ -174,7 +173,7 @@
       <div class="total-label-cell">TOTAL</div>
       <div class="total-amount-cell">
         <span>$</span>
-        <input type="text" placeholder="0"/>
+        <input id="gran-total" type="text" placeholder="0" readonly/>
       </div>
     </div>
 
@@ -197,6 +196,77 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
+  /* ── SUMA AUTOMÁTICA ──────────────────────────────── */
+
+  /**
+   * Parsea un string numérico tolerando separadores de miles con punto o coma.
+   * Ej: "1.500", "1,500", "1500" → 1500
+   */
+  function parsearNumero(str) {
+    if (!str) return 0;
+    // Quitar espacios y símbolo $
+    let s = str.trim().replace(/\$/g, '');
+    // Detectar formato: si hay coma Y punto, el último es el decimal
+    if (s.includes('.') && s.includes(',')) {
+      const lastDot   = s.lastIndexOf('.');
+      const lastComma = s.lastIndexOf(',');
+      if (lastComma > lastDot) {
+        // formato 1.234,56 → punto = miles, coma = decimal
+        s = s.replace(/\./g, '').replace(',', '.');
+      } else {
+        // formato 1,234.56 → coma = miles, punto = decimal
+        s = s.replace(/,/g, '');
+      }
+    } else if (s.includes(',')) {
+      // solo coma: puede ser miles (1,500) o decimal (1,5)
+      // si hay exactamente 3 dígitos tras la coma → miles
+      const partes = s.split(',');
+      if (partes.length === 2 && partes[1].length === 3 && !/\./.test(s)) {
+        s = s.replace(',', ''); // miles
+      } else {
+        s = s.replace(',', '.'); // decimal
+      }
+    } else if (s.includes('.')) {
+      // solo punto: miles (1.500) o decimal (1.5)
+      const partes = s.split('.');
+      if (partes.length === 2 && partes[1].length === 3) {
+        s = s.replace('.', ''); // miles
+      }
+      // si no, se deja como está (decimal normal)
+    }
+    const num = parseFloat(s);
+    return isNaN(num) ? 0 : num;
+  }
+
+  /** Formatea número como moneda colombiana: 1500000 → "1.500.000" */
+  function formatearMoneda(n) {
+    if (n === 0) return '';
+    return n.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  function calcularTotal() {
+    const inputs = document.querySelectorAll('.vr-total');
+    let suma = 0;
+    inputs.forEach(inp => { suma += parsearNumero(inp.value); });
+
+    const totalInput = document.getElementById('gran-total');
+    totalInput.value = suma > 0 ? formatearMoneda(suma) : '';
+
+    // Animación flash en la fila TOTAL
+    const totalRow = document.querySelector('.total-row');
+    totalRow.classList.remove('updated');
+    void totalRow.offsetWidth; // reflow para reiniciar animación
+    if (suma > 0) totalRow.classList.add('updated');
+  }
+
+  // Adjuntar listeners a todos los campos VR. TOTAL
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.vr-total').forEach(inp => {
+      inp.addEventListener('input', calcularTotal);
+    });
+  });
+
+  /* ── DESCARGAR PDF ──────────────────────────────── */
   async function descargarPDF() {
     const btn = document.querySelector('.btn-pdf');
     btn.textContent = 'Generando...';
@@ -227,18 +297,20 @@
     btn.disabled = false;
   }
 
+  /* ── LIMPIAR FORMULARIO ─────────────────────────── */
   function limpiarFormulario() {
     if (!confirm('¿Seguro que deseas limpiar todos los campos?')) return;
-    // Inputs y textareas
     document.querySelectorAll('.receipt input[type="text"], .receipt textarea').forEach(el => {
+      if (el.classList.contains('recibo-num-input')) return; // conservar número
       el.value = '';
     });
-    // Checkboxes
     document.querySelectorAll('.receipt input[type="checkbox"]').forEach(el => {
       el.checked = false;
     });
-    // Restaurar número de recibo
     document.querySelector('.recibo-num-input').value = '0479';
+    // Resetear total
+    document.getElementById('gran-total').value = '';
+    document.querySelector('.total-row').classList.remove('updated');
   }
 </script>
 </html>
