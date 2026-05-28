@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recibo Green & Blue Aquamarine</title>
+  <link rel="stylesheet" href="gree.css">
+
+</head>
+<body>
+<div class="btn-bar">
+  <!-- Descargar PDF -->
+  <button class="btn btn-pdf" onclick="descargarPDF()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Descargar PDF
+  </button>
+  <!-- Limpiar -->
+  <button class="btn btn-limpiar" onclick="limpiarFormulario()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="3 6 5 6 21 6"/>
+      <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+      <path d="M10 11v6M14 11v6"/>
+      <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+    </svg>
+    Limpiar
+  </button>
+</div>
+<div class="receipt">
+
+  <!-- HEADER -->
+  <div class="header">
+
+    <!-- Logo -->
+    <div class="logo-area">
+      <div class="logo-title">
+        <span class="logo-green">GREEN</span><span class="logo-amp">&</span><span class="logo-blue">BLUE</span>
+      </div>
+      <div class="logo-sub">a q u a m a r i n e</div>
+      <div class="logo-tagline">Efecto y prevención en la funcionalidad física</div>
+    </div>
+
+    <!-- Servicios + teléfono -->
+    <div class="services-block">
+      <div class="services-row">
+        <label class="service-item"><input type="checkbox"/> REHABILITACIÓN</label>
+        <label class="service-item"><input type="checkbox"/> ENTRETENIMIENTO</label>
+        <label class="service-item"><input type="checkbox"/> MASAJES</label>
+        <label class="service-item"><input type="checkbox"/> NATACIÓN</label>
+      </div>
+      <div class="phone-row">☎ 318 868 8008 / 310 740 6038</div>
+    </div>
+
+    <!-- Recibo Nº -->
+    <div class="recibo-box">
+      <div class="recibo-label">RECIBO</div>
+      <div class="recibo-num-row">
+        <span class="recibo-nro">N°</span>
+        <input class="recibo-num-input" type="text" value="0479" maxlength="6"/>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FECHAS -->
+  <div class="fechas-row">
+    <div class="fecha-group">
+      <div class="fecha-label">Fecha<br>Inicio</div>
+      <div class="fecha-cells">
+        <input type="text" maxlength="2" placeholder="DD" title="Día"/>
+        <input type="text" maxlength="2" placeholder="MM" title="Mes"/>
+        <input type="text" maxlength="4" placeholder="AAAA" title="Año"/>
+      </div>
+    </div>
+    <div class="fecha-group">
+      <div class="fecha-label">Fecha<br>Finalización</div>
+      <div class="fecha-cells">
+        <input type="text" maxlength="2" placeholder="DD" title="Día"/>
+        <input type="text" maxlength="2" placeholder="MM" title="Mes"/>
+        <input type="text" maxlength="4" placeholder="AAAA" title="Año"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÑOR(ES) / DIRECCIÓN -->
+  <div class="field-row">
+    <span class="field-label">Señor (es):</span>
+    <input class="field-input" type="text" placeholder="Nombre completo"/>
+    <span class="field-label" style="margin-left:16px;">Dirección:</span>
+    <input class="field-input" type="text" placeholder="Dirección"/>
+  </div>
+
+  <!-- TELÉFONO / CIUDAD / EDAD / PESO / TALLA / PPL -->
+  <div class="info-row">
+    <div class="info-item">
+      <span class="info-label">Teléfono:</span>
+      <input class="info-input w-tel" type="text" placeholder="______________"/>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Ciudad:</span>
+      <input class="info-input w-ciudad" type="text" placeholder="________"/>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Edad:</span>
+      <input class="info-input w-edad" type="text" placeholder="____"/>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Peso:</span>
+      <input class="info-input w-peso" type="text" placeholder="____"/>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Talla:</span>
+      <input class="info-input w-talla" type="text" placeholder="____"/>
+    </div>
+    <div class="info-item">
+      <span class="info-label">PPL:</span>
+      <input class="info-input w-ppl" type="text" placeholder="____"/>
+    </div>
+  </div>
+
+  <!-- TABLA -->
+  <div class="table-wrapper">
+
+    <!-- Encabezado -->
+    <div class="table-header">
+      <div class="col-desc-header">DESCRIPCIÓN</div>
+      <div class="col-total-header">VR. TOTAL</div>
+    </div>
+
+    <!-- Filas editables -->
+    <div class="desc-rows">
+      <div class="desc-row">
+        <div class="desc-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input type="text" placeholder=""/></div>
+      </div>
+      <div class="desc-row">
+        <div class="desc-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input type="text" placeholder=""/></div>
+      </div>
+      <div class="desc-row">
+        <div class="desc-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input type="text" placeholder=""/></div>
+      </div>
+      <div class="desc-row">
+        <div class="desc-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input type="text" placeholder=""/></div>
+      </div>
+      <div class="desc-row">
+        <div class="desc-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input type="text" placeholder=""/></div>
+      </div>
+      <div class="desc-row">
+        <div class="desc-cell"><input type="text" placeholder=""/></div>
+        <div class="total-cell"><input type="text" placeholder=""/></div>
+      </div>
+    </div>
+
+    <!-- Observaciones -->
+    <div class="obs-section">
+      <div class="obs-label-area">
+        <span class="obs-label">OBSERVACIONES</span>
+        <textarea placeholder=""></textarea>
+      </div>
+      <div class="obs-total-cell">
+        <input type="text" placeholder=""/>
+      </div>
+    </div>
+
+    <!-- Total -->
+    <div class="total-row">
+      <div class="total-label-cell">TOTAL</div>
+      <div class="total-amount-cell">
+        <span>$</span>
+        <input type="text" placeholder="0"/>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FIRMAS -->
+  <div class="firmas-row">
+    <div class="firma-item">
+      <div class="firma-line"></div>
+      <div class="firma-label">FIRMA DEL INSTRUCTOR</div>
+    </div>
+    <div class="firma-item">
+      <div class="firma-line"></div>
+      <div class="firma-label">FIRMA DEL USUARIO</div>
+    </div>
+  </div>
+
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  async function descargarPDF() {
+    const btn = document.querySelector('.btn-pdf');
+    btn.textContent = 'Generando...';
+    btn.disabled = true;
+
+    const receipt = document.querySelector('.receipt');
+    try {
+      const canvas = await html2canvas(receipt, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff'
+      });
+      const imgData = canvas.toDataURL('image/png');
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'px',
+        format: [canvas.width / 2, canvas.height / 2]
+      });
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width / 2, canvas.height / 2);
+      pdf.save('recibo_green_blue.pdf');
+    } catch(e) {
+      alert('Error al generar el PDF. Intenta de nuevo.');
+      console.error(e);
+    }
+
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Descargar PDF`;
+    btn.disabled = false;
+  }
+
+  function limpiarFormulario() {
+    if (!confirm('¿Seguro que deseas limpiar todos los campos?')) return;
+    // Inputs y textareas
+    document.querySelectorAll('.receipt input[type="text"], .receipt textarea').forEach(el => {
+      el.value = '';
+    });
+    // Checkboxes
+    document.querySelectorAll('.receipt input[type="checkbox"]').forEach(el => {
+      el.checked = false;
+    });
+    // Restaurar número de recibo
+    document.querySelector('.recibo-num-input').value = '0479';
+  }
+</script>
+</html>
