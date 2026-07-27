@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parejas ocultas</title>
+    <link rel="stylesheet" href="cards.css">
+</head>
+<body>
+    <div class="contenedorInicio">
+        <h1 class="titulo">parejas ocultas</h1>
+        <h2 class="subtitulo">bienvenido al juego de parejas</h2>
+        <h2 class="subtitulo">¿como se juega?</h2>
+
+        <ul>
+            <li type="none" class="textlista">eliges con cuentas cartas quieres jugar</li>
+            <li type="none" class="textlista">cada carta tiene una pareja, tienes que destapar las parejas</li>
+            <li type="none" class="textlista">para encontrar las 12 cartas tienes 30 segundos y para las 20 tienes 1 minuto</li>
+        </ul>
+            <h2 class="subtitulo">elige la cantidad de cartas</h2>
+            <div class="contenedorbotonesinicio">
+            <button class="botonescantidadcartas" data-cantidad="12">12 cartas</button>
+            <button class="botonescantidadcartas" data-cantidad="20">20 cartas</button>
+            </div>
+    </div>
+
+    <div class="contenedorjuego off">
+        <h2 class="titulo">parejas ocultas</h2>
+        <section class="tablerojuego20 off">
+            <div class="cartas off" id="espacio1"></div>
+            <div class="cartas off" id="espacio2"></div>
+            <div class="cartas off" id="espacio3"></div>
+            <div class="cartas off" id="espacio4"></div>
+            <div class="cartas off" id="espacio5"></div>
+            <div class="cartas off" id="espacio6"></div>
+            <div class="cartas off" id="espacio7"></div>
+            <div class="cartas off" id="espacio8"></div>
+            <div class="cartas off" id="espacio9"></div>
+            <div class="cartas off" id="espacio10"></div>
+            <div class="cartas off" id="espacio11"></div>
+            <div class="cartas off" id="espacio12"></div>
+            <div class="cartas off" id="espacio13"></div>
+            <div class="cartas off" id="espacio14"></div>
+            <div class="cartas off" id="espacio15"></div>
+            <div class="cartas off" id="espacio16"></div>
+            <div class="cartas off" id="espacio17"></div>
+            <div class="cartas off" id="espacio18"></div>
+            <div class="cartas off" id="espacio19"></div>
+            <div class="cartas off" id="espacio20"></div>
+        </section>
+        <section class="tablerojuego12 off">
+            <div class="cartas off" id="espacio21"></div>
+            <div class="cartas off" id="espacio22"></div>
+            <div class="cartas off" id="espacio23"></div>
+            <div class="cartas off" id="espacio24"></div>
+            <div class="cartas off" id="espacio25"></div>
+            <div class="cartas off" id="espacio26"></div>
+            <div class="cartas off" id="espacio27"></div>
+            <div class="cartas off" id="espacio28"></div>
+            <div class="cartas off" id="espacio29"></div>
+            <div class="cartas off" id="espacio30"></div>
+            <div class="cartas off" id="espacio31"></div>
+            <div class="cartas off" id="espacio32"></div>
+        </section>
+        <section class="contenedortiempo">
+            <h2 class="subtitulo">tiempo:</h2>
+            <div class="texttiempo"></div>
+        </section>
+    </div>
+    <div class="contenedorresultado off">
+        <h2 class="titulo" id="tituloresultado"></h2>
+        <h2 class="subtitulo">tiempo:</h2>
+        <h2 class="subtitulo" id="tiemporesultado"></h2>
+        <button class="reinicio">volver a jugar</button>
+    </div>
+    <script src="cards.js"></script>
+</body>
+</html>
