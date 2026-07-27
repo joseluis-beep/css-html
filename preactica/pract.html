@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <div class="login">
+        <div class="contenido">
+            <p class="sesion">inicar sesion</p> 
+            <p class="registro">nombre
+            </p>
+            <input type="text">
+            <p class="registro">segundo nombre
+            </p>
+            <input type="text">
+            <p class="registro">apellido
+            </p>
+            <input type="text">
+            <p class="registro">segundo  apellido
+            </p>
+            <input type="text">
+        </div>
+    </div> -->
+
+    <div id="login-screen">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="ls-brand">
+    <div class="ls-icon">⬡</div>
+    <div class="ls-title">CHIBIBOT AI</div>
+    <div class="ls-sub">Elige cómo deseas acceder al sistema</div>
+  </div>
+  <div class="ls-cards">
+    <div class="ls-card card-login" id="card-login" onclick="toggleCard('login')">
+      <div class="card-icon">🔐</div>
+      <div class="card-title">INICIAR SESIÓN</div>
+      <div class="card-desc">Accede con tu cuenta.<br>Retoma tu conversación.</div>
+      <div class="card-form" id="form-login" onclick="event.stopPropagation()">
+        <input class="neon-field" id="li-user" type="text" placeholder="Usuario">
+        <input class="neon-field" id="li-pass" type="password" placeholder="Contraseña">
+        <button class="action-card-btn btn-cyan-solid" onclick="doLogin()">→ ENTRAR</button>
+        <div class="card-msg" id="li-msg"></div>
+      </div>
+    </div>
+    <div class="ls-card card-register" id="card-register" onclick="toggleCard('register')">
+      <div class="card-icon">✦</div>
+      <div class="card-title">REGISTRARSE</div>
+      <div class="card-desc">Crea tu cuenta gratuita.<br>Acceso a todo el sistema.</div>
+      <div class="card-form" id="form-register" onclick="event.stopPropagation()">
+        <input class="neon-field" id="reg-user" type="text" placeholder="Usuario">
+        <input class="neon-field" id="reg-email" type="email" placeholder="Correo electrónico">
+        <input class="neon-field" id="reg-pass" type="password" placeholder="Contraseña">
+        <input class="neon-field" id="reg-pass2" type="password" placeholder="Confirmar contraseña">
+        <button class="action-card-btn btn-purple-solid" onclick="doRegister()">✦ CREAR CUENTA</button>
+        <div class="card-msg" id="reg-msg"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ls-bottom">
+    <div class="ls-card card-admin" id="card-admin" onclick="toggleCard('admin')">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">ACCESO ADMINISTRADOR</div>
+      <div class="card-desc">Modo sin restricciones · Acceso ilimitado · Panel de control total</div>
+      <div class="card-form" id="form-admin" onclick="event.stopPropagation()">
+        <input class="neon-field" id="admin-pass" type="password" placeholder="Contraseña de administrador" style="border-color:rgba(255,170,0,0.3);max-width:360px;margin:0 auto 10px;">
+        <button class="action-card-btn btn-amber-solid" style="max-width:360px;margin:0 auto;" onclick="doAdminLogin()">⚡ INGRESAR COMO ADMIN</button>
+        <div class="card-msg" id="admin-msg"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ls-footer">HASTA 30 USUARIOS · MEMORIA ACTIVA · RESPUESTAS ILIMITADAS</div>
+</div>
+
+</body>
+</html>

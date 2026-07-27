@@ -1,0 +1,20 @@
+.flex-container {
+    display: flex;
+    background-color: #f1f1f1;
+    flex-direction:row;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea si no caben en una sola fila */
+    justify-content: space-around; /* justify-content es una propiedad de CSS que se utiliza para alinear y distribuir los elementos hijos dentro de un contenedor flexible (flex container) a lo largo del eje principal (main axis). Esta propiedad es parte del modelo de diseño flexible (Flexbox) y permite controlar cómo se distribuyen los elementos dentro del contenedor, especialmente cuando hay espacio adicional disponible. */
+    
+
+}
+
+.flex-item {
+    background-color: #4CAF50;
+    color: rgb(0, 0, 0);
+    width: 100px;
+    margin: 10px;
+    line-height: 75px;
+    font-family: Arial;
+    font-size: 30px;
+    text-align: center;
+}
